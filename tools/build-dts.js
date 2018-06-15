@@ -1,7 +1,8 @@
 var dts = require('dts-bundle');
+var package = io.File.read('package.json');
 
 dts.bundle({
-	name: 'memoize',
+	name: package.name,
 	main: './ts-temp/memoize-deco.d.ts',
 	out: './typings/index.d.ts'
 });

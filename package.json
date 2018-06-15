@@ -1,0 +1,68 @@
+{
+    "name": "memoize-deco",
+    "description": "Function Memoizer Docorator and Factory",
+    "author": {
+        "name": "Alexander Kit",
+        "email": "alex.kit@atmajs.com"
+    },
+    "version": "0.2.49",
+    "main": "./lib/memoize-deco.js",
+    "types": "./lib/memoize-deco.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/tenbits/memoize-deco.git"
+    },
+    "devDependencies": {
+        "app-bundler": "0.0.47",
+        "atma-loader-ts": "^1.0.0",
+        "dts-bundle": "^0.7.3"
+    },
+    "scripts": {
+        "test": "atma test",
+        "build": "app-bundler && npm run build-dts",
+        "watch": "app-bundler --watch",
+        "build-dts": "tsc -p . & atma custom tools/build-dts"
+    },
+    "license": "MIT",
+    "app-bundler": {
+        "file": "src/memoize-deco.ts",
+        "outputMain": "lib/memoize-deco.js",
+        "package": {
+            "module": "commonjs",
+            "commonjs": {
+                "output": "simplified"
+            }
+        },
+        "extensions": {
+            "io": {
+                "type": "js"
+            }
+        },
+        "defaultExtensions": {
+            "js": "ts"
+        },
+        "middlewares": {
+            "ts": [
+                "atma-loader-ts:read"
+            ]
+        }
+    },
+    "atma": {
+        "plugins": [
+            "atma-loader-ts"
+        ],
+        "settings": {
+            "atma-loader-ts": {
+                "extensions": [
+                    "test",
+                    "ts"
+                ],
+                "typescript": {
+                    "compilerOptions": {
+                        "module": "commonjs"
+                    }
+                }
+            }
+        }
+    }
+}
